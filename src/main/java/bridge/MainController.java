@@ -15,7 +15,7 @@ public class MainController {
         BridgeGame bridgeGame = new BridgeGame(answer, user);
 
         proceedBridge(bridgeGame);
-        OutputView.printResult(bridgeGame);
+//        OutputView.printResult(bridgeGame);
     }
 
     private static Bridge initBridge() {
@@ -25,18 +25,18 @@ public class MainController {
     }
 
     private static void proceedBridge(BridgeGame bridgeGame) {
-        while (true) {
-            bridgeGame.move(InputView.readMoving());
-            BridgeResult bridgeResult = bridgeGame.calculate();
-            OutputView.printMap(bridgeResult);
-
-            if (isEnd()) {
-                if (isRetry()) {
-                    bridgeGame.retry();
-                    continue;
-                }
-                break;
-            }
-        }
+//        while (true) {
+//            bridgeGame.move(InputView.readMoving());
+//            BridgeResult bridgeResult = bridgeGame.calculate();
+//            OutputView.printMap(bridgeResult);
+//
+//            if (isEnd()) {
+//                if (isRetry()) {
+//                    bridgeGame.retry();
+//                    continue;
+//                }
+//                break;
+//            }
+//        }
     }
 }
