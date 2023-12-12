@@ -23,7 +23,6 @@ public class BridgeGame {
         this.trial++;
     }
 
-
     public boolean isEnd() {
         return (answer.getSize() == user.getSize() && isSuccess()) ||
                 !isSuccess();
