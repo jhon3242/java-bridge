@@ -7,7 +7,7 @@ public enum RetryCommand {
     YES("R"),
     NO("Q");
 
-    private String stringValue;
+    private final String stringValue;
 
     RetryCommand(String stringValue) {
         this.stringValue = stringValue;

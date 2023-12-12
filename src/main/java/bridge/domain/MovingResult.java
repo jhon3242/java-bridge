@@ -5,7 +5,7 @@ public enum MovingResult {
     SUCCESS("O"),
     FAIL("X");
 
-    private String stringValue;
+    private final String stringValue;
 
     MovingResult(String stringValue) {
         this.stringValue = stringValue;

@@ -7,8 +7,8 @@ public enum Direction {
     Up("U", 1),
     Down("D", 0);
 
-    private String stringValue;
-    private int intValue;
+    private final String stringValue;
+    private final int intValue;
 
     Direction(String string, int intValue) {
         this.stringValue = string;
