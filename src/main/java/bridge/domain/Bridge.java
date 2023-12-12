@@ -5,20 +5,27 @@ import java.util.List;
 
 public class Bridge {
     private final List<String> bridge;
-    private int position;
 
     public Bridge(List<String> bridge) {
         this.bridge = bridge;
-        this.position = bridge.size();
+    }
+
+    public void addDirection(Direction direction) {
+        bridge.add(direction.getStringValue());
     }
 
 
 
-    @Override
-    public String toString() {
-        return "Bridge{" +
-                "bridge=" + bridge +
-                ", position=" + position +
-                '}';
+
+    public int getSize() {
+        return bridge.size();
     }
+
+    public Direction getDirection(int i) {
+        if (i >= bridge.size()) {
+            throw new IllegalArgumentException(ExceptionMessage.OUT_OF_RANGE);
+        }
+        return Direction.findByString(bridge.get(i));
+    }
+
 }

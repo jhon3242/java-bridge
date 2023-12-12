@@ -25,7 +25,7 @@ public class BridgeMaker {
         List<String> result = new ArrayList<>();
         while (result.size() != size) {
             Direction direction = Direction.findByInt(bridgeNumberGenerator.generate());
-            result.add(direction.getString());
+            result.add(direction.getStringValue());
         }
         return result;
     }

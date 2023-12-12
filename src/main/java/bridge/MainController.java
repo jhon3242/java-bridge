@@ -4,6 +4,8 @@ import bridge.domain.Bridge;
 import bridge.domain.BridgeGame;
 import bridge.domain.BridgeMaker;
 import bridge.domain.BridgeRandomNumberGenerator;
+import bridge.domain.BridgeResult;
+import bridge.domain.Direction;
 import bridge.view.InputView;
 import bridge.view.OutputView;
 import java.util.ArrayList;
@@ -30,11 +32,11 @@ public class MainController {
     }
 
     private static void proceedBridge(BridgeGame bridgeGame) {
-//        while (true) {
-//            bridgeGame.move(InputView.readMoving());
-//            BridgeResult bridgeResult = bridgeGame.calculate();
-//            OutputView.printMap(bridgeResult);
-//
+        while (true) {
+            bridgeGame.move(readDirection());
+            BridgeResult bridgeResult = bridgeGame.calculate();
+            OutputView.printMap(bridgeResult);
+
 //            if (isEnd()) {
 //                if (isRetry()) {
 //                    bridgeGame.retry();
@@ -42,6 +44,15 @@ public class MainController {
 //                }
 //                break;
 //            }
-//        }
+        }
+    }
+
+    private static Direction readDirection() {
+        try {
+            return Direction.findByString(InputView.readMoving());
+        } catch (IllegalArgumentException exception) {
+            OutputView.printException(exception);
+            return readDirection();
+        }
     }
 }

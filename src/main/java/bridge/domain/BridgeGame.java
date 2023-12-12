@@ -1,5 +1,6 @@
 package bridge.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,12 @@ public class BridgeGame {
      * <p>
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void move() {
+    public void move(Direction direction) {
+        user.addDirection(direction);
+    }
+
+    private void isEnd() {
+
     }
 
     /**
@@ -30,5 +36,28 @@ public class BridgeGame {
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void retry() {
+    }
+
+    public BridgeResult calculate() {
+        List<String> upSide = new ArrayList<>();
+        List<String> downSide = new ArrayList<>();
+
+        for (int i = 0; i < user.getSize(); i++) {
+            Direction answerDirection = answer.getDirection(i);
+            Direction userDirection = user.getDirection(i);
+            boolean isMatch = Direction.isMatch(answerDirection, userDirection);
+            MovingResult movingResult = MovingResult.findByBoolean(isMatch);
+
+            if (answerDirection == Direction.Up) {
+                upSide.add(movingResult.getStringValue());
+                downSide.add(MovingResult.BLANK.getStringValue());
+            }
+
+            if (answerDirection == Direction.Down) {
+                downSide.add(movingResult.getStringValue());
+                upSide.add(MovingResult.BLANK.getStringValue());
+            }
+        }
+        return new BridgeResult(upSide, downSide);
     }
 }

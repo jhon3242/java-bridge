@@ -24,7 +24,10 @@ public class InputView {
      * 검증 필요
      */
     public static String readMoving() {
-        return null;
+        System.out.println(ViewMessage.INPUT_DIRECTION);
+        String value = Console.readLine().trim();
+        validateBlank(value);
+        return value;
     }
 
     /**
