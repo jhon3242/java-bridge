@@ -46,12 +46,12 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(() -> {
             run("3", "U", "D", "Q");
             assertThat(output()).contains(
-                    "[ O | X ]",
-                    "[   |   ]"
+                    "[ O |   ]",
+                    "[   | X ]"
             );
 
-            int upSideIndex = output().indexOf("[ O | X ]");
-            int downSideIndex = output().indexOf("[   |   ]");
+            int upSideIndex = output().indexOf("[ O |   ]");
+            int downSideIndex = output().indexOf("[   | X ]");
             assertThat(upSideIndex).isLessThan(downSideIndex);
         }, 1, 1, 1);
     }

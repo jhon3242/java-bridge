@@ -14,7 +14,7 @@ public class BridgeGame {
     public BridgeGame(Bridge answer, Bridge user) {
         this.answer = answer;
         this.user = user;
-        this.trial = 0;
+        this.trial = 1;
     }
 
     /**
@@ -75,5 +75,9 @@ public class BridgeGame {
             }
         }
         return new BridgeResult(upSide, downSide);
+    }
+
+    public int getTrial() {
+        return trial;
     }
 }

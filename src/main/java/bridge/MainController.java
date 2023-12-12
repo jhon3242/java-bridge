@@ -13,22 +13,25 @@ import java.util.ArrayList;
 
 public class MainController {
     public static void run() {
-        Bridge answer = initBridge();
-        Bridge user = new Bridge(new ArrayList<>());
-        BridgeGame bridgeGame = new BridgeGame(answer, user);
-
+        BridgeGame bridgeGame = initBridgeGame();
         proceedBridge(bridgeGame);
-//        OutputView.printResult(bridgeGame);
+        endGame(bridgeGame);
     }
 
-    private static Bridge initBridge() {
+    private static BridgeGame initBridgeGame() {
+        Bridge answer = initAnswerBridge();
+        Bridge user = new Bridge(new ArrayList<>());
+        return new BridgeGame(answer, user);
+    }
+
+    private static Bridge initAnswerBridge() {
         try {
             BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
             int bridgeSize = InputView.readBridgeSize();
             return new Bridge(bridgeMaker.makeBridge(bridgeSize));
         } catch (IllegalArgumentException exception) {
             OutputView.printException(exception);
-            return initBridge();
+            return initAnswerBridge();
         }
     }
 
@@ -66,5 +69,9 @@ public class MainController {
             OutputView.printException(exception);
             return readDirection();
         }
+    }
+
+    private static void endGame(BridgeGame bridgeGame) {
+        OutputView.printResult(bridgeGame);
     }
 }
