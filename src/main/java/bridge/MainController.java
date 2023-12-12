@@ -19,6 +19,7 @@ public class MainController {
     }
 
     private static BridgeGame initBridgeGame() {
+        OutputView.printStart();
         Bridge answer = initAnswerBridge();
         Bridge user = new Bridge(new ArrayList<>());
         return new BridgeGame(answer, user);

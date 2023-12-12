@@ -9,10 +9,15 @@ import java.util.List;
  * 사용자에게 게임 진행 상황과 결과를 출력하는 역할을 한다.
  */
 public class OutputView {
+    public static void printStart() {
+        System.out.println(ViewMessage.OUTPUT_START);
+        System.out.println();
+    }
 
     public static void printMap(BridgeResult bridgeResult) {
         printMapSide(bridgeResult.getUpSide());
         printMapSide(bridgeResult.getDownSide());
+        System.out.println();
     }
 
     private static void printMapSide(List<String> side) {

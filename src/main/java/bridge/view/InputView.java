@@ -13,6 +13,7 @@ public class InputView {
         System.out.println(ViewMessage.INPUT_BRIDGE_SIZE);
         String value = Console.readLine().trim();
         validateNumber(value);
+        System.out.println();
         return Integer.parseInt(value);
     }
 
