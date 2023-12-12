@@ -16,7 +16,7 @@ public class OutputView {
      * @param bridgeResult
      */
     public static void printMap(BridgeResult bridgeResult) {
-        printMapSide(bridgeResult.getUpside());
+        printMapSide(bridgeResult.getUpSide());
         printMapSide(bridgeResult.getDownSide());
     }
 
