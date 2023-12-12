@@ -38,7 +38,8 @@ public class OutputView {
     }
 
     private static void printStatus(BridgeGame bridgeGame) {
-        printMap(bridgeGame.calculate());
+        BridgeResult bridgeResult = BridgeResult.calculate(bridgeGame.getAnswer(), bridgeGame.getUser());
+        printMap(bridgeResult);
         System.out.print("게임 성공 여부: ");
         if (bridgeGame.isFail()) {
             System.out.println("실패");

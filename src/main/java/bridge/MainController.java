@@ -36,19 +36,22 @@ public class MainController {
     }
 
     private static void proceedBridge(BridgeGame bridgeGame) {
-        while (true) {
+        do {
             bridgeGame.move(readDirection());
-            BridgeResult bridgeResult = bridgeGame.calculate();
+            BridgeResult bridgeResult = BridgeResult.calculate(bridgeGame.getAnswer(), bridgeGame.getUser());
             OutputView.printMap(bridgeResult);
+        } while (handleEnd(bridgeGame));
+    }
 
-            if (bridgeGame.isEnd()) {
-                if (bridgeGame.isFail() && isRetry()) {
-                    bridgeGame.retry();
-                    continue;
-                }
-                break;
+    private static boolean handleEnd(BridgeGame bridgeGame) {
+        if (bridgeGame.isEnd()) {
+            if (bridgeGame.isFail() && isRetry()) {
+                bridgeGame.retry();
+                return true;
             }
+            return false;
         }
+        return true;
     }
 
     private static boolean isRetry() {
@@ -74,4 +77,6 @@ public class MainController {
     private static void endGame(BridgeGame bridgeGame) {
         OutputView.printResult(bridgeGame);
     }
+
+
 }

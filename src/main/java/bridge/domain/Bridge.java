@@ -15,9 +15,6 @@ public class Bridge {
         bridge.add(direction.getStringValue());
     }
 
-
-
-
     public int getSize() {
         return bridge.size();
     }
