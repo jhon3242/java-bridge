@@ -42,6 +42,21 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 잘못된_방향_테스트() {
+        assertRandomNumberInRangeTest(() -> {
+            run("3", "U", "D", "Q");
+            assertThat(output()).contains(
+                    "[ O | X ]",
+                    "[   |   ]"
+            );
+
+            int upSideIndex = output().indexOf("[ O | X ]");
+            int downSideIndex = output().indexOf("[   |   ]");
+            assertThat(upSideIndex).isLessThan(downSideIndex);
+        }, 1, 1, 1);
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("a");
