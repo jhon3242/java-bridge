@@ -19,8 +19,4 @@ public enum RetryCommand {
                     .findAny()
                     .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.RETRY_COMMAND));
     }
-
-    public String getStringValue() {
-        return stringValue;
-    }
 }

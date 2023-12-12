@@ -65,7 +65,6 @@ public class MainController {
         }
     }
 
-
     private static Direction readDirection() {
         try {
             return Direction.findByString(InputView.readMoving());

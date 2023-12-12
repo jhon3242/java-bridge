@@ -34,13 +34,7 @@ public enum Direction {
                 answerDirection.intValue == userDirection.intValue;
     }
 
-
-
     public String getStringValue() {
         return stringValue;
-    }
-
-    public int getIntValue() {
-        return intValue;
     }
 }

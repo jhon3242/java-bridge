@@ -8,15 +8,19 @@ public class Bridge {
     private final List<String> bridge;
 
     public Bridge(List<String> bridge) {
+        validateList(bridge);
         this.bridge = new ArrayList<>(bridge);
+    }
+
+    private void validateList(List<String> bridge) {
+        if (bridge.isEmpty()) {
+            return;
+        }
+        bridge.forEach(Direction::findByString);
     }
 
     public void addDirection(Direction direction) {
         bridge.add(direction.getStringValue());
-    }
-
-    public int getSize() {
-        return bridge.size();
     }
 
     public Direction getDirection(int i) {
@@ -28,5 +32,9 @@ public class Bridge {
 
     public void removeLastMove() {
         bridge.remove(bridge.size() - 1);
+    }
+
+    public int getSize() {
+        return bridge.size();
     }
 }
