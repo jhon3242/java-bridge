@@ -4,8 +4,8 @@ package bridge.domain;
  * 다리 건너기 게임을 관리하는 클래스
  */
 public class BridgeGame {
-    private Bridge answer;
-    private Bridge user;
+    private final Bridge answer;
+    private final Bridge user;
     private int trial;
 
     public BridgeGame(Bridge answer, Bridge user) {

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BridgeResult {
-    private List<String> upSide;
-    private List<String> downSide;
+    private final List<String> upSide;
+    private final List<String> downSide;
 
     public BridgeResult(List<String> upside, List<String> downSide) {
         this.upSide = upside;

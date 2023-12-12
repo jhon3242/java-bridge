@@ -77,6 +77,4 @@ public class MainController {
     private static void endGame(BridgeGame bridgeGame) {
         OutputView.printResult(bridgeGame);
     }
-
-
 }
