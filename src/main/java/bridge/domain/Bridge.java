@@ -8,8 +8,15 @@ public class Bridge {
 
     public Bridge(List<String> bridge) {
         this.bridge = bridge;
-        this.position = 0;
+        this.position = bridge.size();
     }
 
 
+    @Override
+    public String toString() {
+        return "Bridge{" +
+                "bridge=" + bridge +
+                ", position=" + position +
+                '}';
+    }
 }
