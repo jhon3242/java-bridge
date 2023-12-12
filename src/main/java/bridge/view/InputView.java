@@ -34,7 +34,10 @@ public class InputView {
      * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
      */
     public static String readGameCommand() {
-        return null;
+        System.out.println(ViewMessage.INPUT_RETRY_COMMAND);
+        String value = Console.readLine().trim();
+        validateBlank(value);
+        return value;
     }
 
     private static void validateBlank(String value) {

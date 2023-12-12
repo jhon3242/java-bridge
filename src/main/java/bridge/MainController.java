@@ -6,6 +6,7 @@ import bridge.domain.BridgeMaker;
 import bridge.domain.BridgeRandomNumberGenerator;
 import bridge.domain.BridgeResult;
 import bridge.domain.Direction;
+import bridge.domain.RetryCommand;
 import bridge.view.InputView;
 import bridge.view.OutputView;
 import java.util.ArrayList;
@@ -37,15 +38,26 @@ public class MainController {
             BridgeResult bridgeResult = bridgeGame.calculate();
             OutputView.printMap(bridgeResult);
 
-//            if (isEnd()) {
-//                if (isRetry()) {
-//                    bridgeGame.retry();
-//                    continue;
-//                }
-//                break;
-//            }
+            if (bridgeGame.isEnd()) {
+                if (bridgeGame.isFail() && isRetry()) {
+                    bridgeGame.retry();
+                    continue;
+                }
+                break;
+            }
         }
     }
+
+    private static boolean isRetry() {
+        try {
+            RetryCommand command = RetryCommand.findByString(InputView.readGameCommand());
+            return command == RetryCommand.YES;
+        } catch (IllegalArgumentException exception) {
+            OutputView.printException(exception);
+            return isRetry();
+        }
+    }
+
 
     private static Direction readDirection() {
         try {

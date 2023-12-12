@@ -26,8 +26,22 @@ public class BridgeGame {
         user.addDirection(direction);
     }
 
-    private void isEnd() {
+    public boolean isEnd() {
+        return (answer.getSize() == user.getSize() && isSuccess()) ||
+                !isSuccess();
+    }
 
+    private boolean isSuccess() {
+        for (int i = 0; i < user.getSize(); i++) {
+            if (answer.getDirection(i) != user.getDirection(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isFail() {
+        return !isSuccess();
     }
 
     /**
@@ -36,6 +50,8 @@ public class BridgeGame {
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void retry() {
+        user.removeLastMove();
+        this.trial++;
     }
 
     public BridgeResult calculate() {
@@ -48,12 +64,12 @@ public class BridgeGame {
             boolean isMatch = Direction.isMatch(answerDirection, userDirection);
             MovingResult movingResult = MovingResult.findByBoolean(isMatch);
 
-            if (answerDirection == Direction.Up) {
+            if (userDirection == Direction.Up) {
                 upSide.add(movingResult.getStringValue());
                 downSide.add(MovingResult.BLANK.getStringValue());
             }
 
-            if (answerDirection == Direction.Down) {
+            if (userDirection == Direction.Down) {
                 downSide.add(movingResult.getStringValue());
                 upSide.add(MovingResult.BLANK.getStringValue());
             }

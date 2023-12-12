@@ -1,13 +1,14 @@
 package bridge.domain;
 
 import bridge.message.ExceptionMessage;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bridge {
     private final List<String> bridge;
 
     public Bridge(List<String> bridge) {
-        this.bridge = bridge;
+        this.bridge = new ArrayList<>(bridge);
     }
 
     public void addDirection(Direction direction) {
@@ -28,4 +29,7 @@ public class Bridge {
         return Direction.findByString(bridge.get(i));
     }
 
+    public void removeLastMove() {
+        bridge.remove(bridge.size() - 1);
+    }
 }
