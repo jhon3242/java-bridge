@@ -13,17 +13,10 @@ public class InputView {
      * 다리의 길이를 입력받는다.
      */
     public static int readBridgeSize() {
-        try {
-            System.out.println(ViewMessage.INPUT_BRIDGE_SIZE);
-            String value = Console.readLine().trim();
-            validateNumber(value);
-            int intValue = Integer.parseInt(value);
-            validateBridgeSize(intValue);
-            return intValue;
-        } catch (IllegalArgumentException exception) {
-            OutputView.printException(exception);
-            return readBridgeSize();
-        }
+        System.out.println(ViewMessage.INPUT_BRIDGE_SIZE);
+        String value = Console.readLine().trim();
+        validateNumber(value);
+        return Integer.parseInt(value);
     }
 
     /**
@@ -52,12 +45,6 @@ public class InputView {
             Integer.parseInt(value);
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER);
-        }
-    }
-
-    private static void validateBridgeSize(int size) {
-        if (size < 3 || size > 20) {
-            throw new IllegalArgumentException(ExceptionMessage.BRIDGE_SIZE);
         }
     }
 

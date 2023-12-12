@@ -19,9 +19,14 @@ public class MainController {
     }
 
     private static Bridge initBridge() {
-        BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
-        int bridgeSize = InputView.readBridgeSize();
-        return new Bridge(bridgeMaker.makeBridge(bridgeSize));
+        try {
+            BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
+            int bridgeSize = InputView.readBridgeSize();
+            return new Bridge(bridgeMaker.makeBridge(bridgeSize));
+        } catch (IllegalArgumentException exception) {
+            OutputView.printException(exception);
+            return initBridge();
+        }
     }
 
     private static void proceedBridge(BridgeGame bridgeGame) {
